@@ -1,0 +1,25 @@
+server:
+  port: 8761   # HTTP (Tomcat) port
+
+spring:
+  thymeleaf:
+    enabled: false     # Disable Thymeleaf
+  # datasource:
+  #  driver-class-name: com.mysql.jdbc.Driver
+  #  username: root
+  #  password: guoruijie
+  #  url: jdbc:mysql://127.0.0.1:3306/pos?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+  application:
+    name: pos-eureka
+
+eureka:
+  instance:
+    hostname: pos-eureka
+    instance-id: ${spring.application.name}:${random.uuid}
+  client:  # Not a client, don't register with yourself
+    registerWithEureka: false
+    fetchRegistry: false
+    server-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+
+
